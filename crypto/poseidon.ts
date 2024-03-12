@@ -1,9 +1,9 @@
 import { assertPositiveInteger } from './non-negative.js';
-import { poseidonParamsKimchiFp, poseidonParamsLegacyFp } from './constants.js';
-import { FiniteField, Fp } from './finite-field.js';
+import { poseidonParamsBn128, poseidonParamsKimchiFp, poseidonParamsLegacyFp } from './constants.js';
+import { Bn254Fp, FiniteField, Fp } from './finite-field.js';
 import { GroupMapPallas } from './elliptic-curve.js';
 
-export { Poseidon, PoseidonLegacy };
+export { Poseidon, PoseidonLegacy, PoseidonBn254 };
 
 type PoseidonParameters = {
   fullRounds: number;
@@ -49,6 +49,13 @@ const Poseidon = {
   hashToGroup: makeHashToGroup(PoseidonSpec.hash),
 };
 const PoseidonLegacy = createPoseidon(Fp, poseidonParamsLegacyFp);
+
+const PoseidonBn254Spec = createPoseidon(Bn254Fp, poseidonParamsBn128);
+
+const PoseidonBn254 = {
+  ...PoseidonBn254Spec,
+  hashToGroup: makeHashToGroup(PoseidonBn254Spec.hash),
+};
 
 function createPoseidon(
   Fp: FiniteField,
