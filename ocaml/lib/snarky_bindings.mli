@@ -11,6 +11,12 @@ module Poseidon : sig
   type sponge
 end
 
+module Bn254 : sig
+  module Poseidon : sig
+    type sponge
+  end
+end
+
 val snarky :
   < exists : (int -> (unit -> field array) -> Field.t array) Js.meth
   ; existsVar : ((unit -> field) -> Field.t) Js.meth
@@ -497,8 +503,23 @@ val snarky :
                   -> Kimchi_backend.Bn254.Bn254_based_plonk.Proof.with_public_evals )
                 Js.meth >
             Js.t
+            Js.readonly_prop
+      ; poseidon :
+          < update :
+              (   Impl_bn254.Field.t Random_oracle.State.t
+                  -> Impl_bn254.Field.t array
+                  -> Impl_bn254.Field.t Random_oracle.State.t )
+                Js.meth
+          ; sponge :
+              < absorb : (Bn254.Poseidon.sponge -> Impl_bn254.Field.t -> unit) Js.meth
+              ; create : (bool Js.t -> Bn254.Poseidon.sponge) Js.meth
+              ; squeeze : (Bn254.Poseidon.sponge -> Impl_bn254.Field.t) Js.meth >
+                Js.t
+                Js.readonly_prop >
+            Js.t
             Js.readonly_prop >
         Js.t
         Js.readonly_prop >
+
     Js.t
 
