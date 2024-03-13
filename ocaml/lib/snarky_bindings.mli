@@ -500,7 +500,7 @@ val snarky :
                   -> int
                   -> Impl_bn254.field array
                   -> Impl_bn254.Keypair.t
-                  -> Kimchi_backend.Bn254.Bn254_based_plonk.Proof.with_public_evals )
+                  -> string )
                 Js.meth >
             Js.t
             Js.readonly_prop

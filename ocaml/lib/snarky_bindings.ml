@@ -886,11 +886,12 @@ module Bn254 = struct
       let pk = Impl_bn254.Keypair.pk keypair in
       let input_typ = typ public_input_size in
       let return_typ = Impl_bn254.Typ.unit in
-      Impl_bn254.generate_witness_conv ~input_typ ~return_typ
-        ~f:(fun { Impl_bn254.Proof_inputs.auxiliary_inputs; public_inputs } () ->
-            Backend.Proof.create pk public_inputs auxiliary_inputs
-          )
-        (Main.of_js main) public_input
+      let proof = Impl_bn254.generate_witness_conv ~input_typ ~return_typ
+          ~f:(fun { Impl_bn254.Proof_inputs.auxiliary_inputs; public_inputs } () ->
+              Backend.Proof.create_json pk public_inputs auxiliary_inputs
+            )
+          (Main.of_js main) public_input in
+      proof
 
     module Keypair = struct
       let get_vk t = Impl_bn254.Keypair.vk t
