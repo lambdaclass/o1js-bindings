@@ -500,7 +500,7 @@ val snarky :
                   -> int
                   -> Impl_bn254.field array
                   -> Impl_bn254.Keypair.t
-                  -> string * string )
+                  -> string * string * string )
                 Js.meth >
             Js.t
             Js.readonly_prop
