@@ -1,9 +1,9 @@
 (**
-  this file is used to generate the content of bindings/crypto/constants.ts
-  these constants are therefore available to o1js and mina-signer
-  -) without causing a runtime dependency on ocaml code
-  -) without having to be regenerated at startup
- *)
+   this file is used to generate the content of bindings/crypto/constants.ts
+   these constants are therefore available to o1js and mina-signer
+   -) without causing a runtime dependency on ocaml code
+   -) without having to be regenerated at startup
+*)
 
 open Core_kernel
 module Field = Pickles.Impls.Step.Field.Constant
@@ -37,9 +37,9 @@ let prefix_hash_entry (kind : hash_prefix_kind) (s : string) =
   let s, fields =
     match kind with
     | Kimchi ->
-        (s, Random_oracle.(State.to_array (salt s)))
+      (s, Random_oracle.(State.to_array (salt s)))
     | Legacy ->
-        (s, Random_oracle.Legacy.(State.to_array (salt s)))
+      (s, Random_oracle.Legacy.(State.to_array (salt s)))
   in
   ((s :> string), array field fields)
 
@@ -139,6 +139,20 @@ let poseidon_params_kimchi =
     ; ("power", `Int Pickles.Tick_field_sponge.Inputs.alpha)
     ]
 
+let poseidon_params_bn128 =
+  `Assoc
+    [ ("mds", array (array string) Sponge.Params.bn128.mds)
+    ; ( "roundConstants"
+      , array (array string) Sponge.Params.bn128.round_constants )
+    ; ("fullRounds", `Int Pickles.Bn254_field_sponge.Inputs.rounds_full)
+    ; ("partialRounds", `Int Pickles.Bn254_field_sponge.Inputs.rounds_partial)
+    ; ( "hasInitialRoundConstant"
+      , `Bool Pickles.Bn254_field_sponge.Inputs.initial_ark )
+    ; ("stateSize", `Int Random_oracle.state_size)
+    ; ("rate", `Int Random_oracle.rate)
+    ; ("power", `Int Pickles.Bn254_field_sponge.Inputs.alpha)
+    ]
+
 let poseidon_params_legacy =
   `Assoc
     [ ("mds", array (array string) Sponge.Params.pasta_p_legacy.mds)
@@ -169,6 +183,7 @@ let constants =
   ; ("protocolVersions", protocol_versions)
   ; ("poseidonParamsKimchiFp", poseidon_params_kimchi)
   ; ("poseidonParamsLegacyFp", poseidon_params_legacy)
+  ; ("poseidonParamsBn128", poseidon_params_bn128)
   ; ("mocks", mocks)
   ]
 

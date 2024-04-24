@@ -886,11 +886,12 @@ module Bn254 = struct
       let pk = Impl_bn254.Keypair.pk keypair in
       let input_typ = typ public_input_size in
       let return_typ = Impl_bn254.Typ.unit in
-      Impl_bn254.generate_witness_conv ~input_typ ~return_typ
-        ~f:(fun { Impl_bn254.Proof_inputs.auxiliary_inputs; public_inputs } () ->
-            Backend.Proof.create pk public_inputs auxiliary_inputs
-          )
-        (Main.of_js main) public_input
+      let proof_with_public, index, srs = Impl_bn254.generate_witness_conv ~input_typ ~return_typ
+          ~f:(fun { Impl_bn254.Proof_inputs.auxiliary_inputs; public_inputs } () ->
+              Backend.Proof.create_json pk public_inputs auxiliary_inputs
+            )
+          (Main.of_js main) public_input in
+      (proof_with_public, index, srs)
 
     module Keypair = struct
       let get_vk t = Impl_bn254.Keypair.vk t
@@ -902,6 +903,50 @@ module Bn254 = struct
       let get_cs_json t =
         (Impl_bn254.Keypair.pk t).index |> prover_to_json |> Util.json_parse
     end
+  end
+
+  module Poseidon = struct
+    let update (state : Impl_bn254.Field.t Random_oracle.State.t) (input : Impl_bn254.Field.t array) :
+      Impl_bn254.Field.t Random_oracle.State.t =
+      Random_oracle.Checked_bn254.update ~state input
+
+    (* sponge *)
+
+    let to_unchecked (x : Impl_bn254.Field.t) =
+      match x with Constant y -> y | y -> Impl_bn254.As_prover.read_var y
+
+    module Poseidon_sponge_checked =
+      Sponge.Make_sponge (Pickles.Bn254_main_inputs.Sponge.Permutation)
+    module Poseidon_sponge =
+      Sponge.Make_sponge (Sponge.Poseidon (Pickles.Bn254_field_sponge.Inputs))
+
+    let sponge_params = Kimchi_bn254_basic.poseidon_params_fp
+
+    let sponge_params_checked = Sponge.Params.map sponge_params ~f:Impl_bn254.Field.constant
+
+    type sponge =
+      | Checked of Poseidon_sponge_checked.t
+      | Unchecked of Poseidon_sponge.t
+
+    (* returns a "sponge" that stays opaque to JS *)
+    let sponge_create (is_checked : bool Js.t) : sponge =
+      if Js.to_bool is_checked then
+        Checked (Poseidon_sponge_checked.create ?init:None sponge_params_checked)
+      else Unchecked (Poseidon_sponge.create ?init:None sponge_params)
+
+    let sponge_absorb (sponge : sponge) (field : Impl_bn254.Field.t) : unit =
+      match sponge with
+      | Checked s ->
+        Poseidon_sponge_checked.absorb s field
+      | Unchecked s ->
+        Poseidon_sponge.absorb s @@ to_unchecked field
+
+    let sponge_squeeze (sponge : sponge) : Impl_bn254.Field.t =
+      match sponge with
+      | Checked s ->
+        Poseidon_sponge_checked.squeeze s
+      | Unchecked s ->
+        Poseidon_sponge.squeeze s |> Impl_bn254.Field.constant
   end
 end
 
@@ -1161,6 +1206,20 @@ let snarky =
                 method getVerificationKey = Circuit.Keypair.get_vk
 
                 method getConstraintSystemJSON = Circuit.Keypair.get_cs_json
+              end
+          end
+
+        val poseidon =
+          object%js
+            method update = Poseidon.update
+
+            val sponge =
+              object%js
+                method create = Poseidon.sponge_create
+
+                method absorb = Poseidon.sponge_absorb
+
+                method squeeze = Poseidon.sponge_squeeze
               end
           end
       end
