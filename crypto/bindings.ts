@@ -3,22 +3,22 @@
  * It is exposed to JSOO by populating a global variable with an object.
  * It gets imported as the first thing in ../../snarky.js so that the global variable is ready by the time JSOO code gets executed.
  */
-import { prefixHashes, prefixHashesLegacy } from '../crypto/constants.js';
-import { Bigint256Bindings } from './bindings/bigint256.js';
-import { PallasBindings, VestaBindings, Bn254Bindings } from './bindings/curve.js';
-import { FpBindings, FqBindings, Bn254FpBindings, Bn254FqBindings } from './bindings/field.js';
-import { FpVectorBindings, FqVectorBindings, Bn254FpVectorBindings, Bn254FqVectorBindings } from './bindings/vector.js';
+import { prefixHashes, prefixHashesLegacy } from '../crypto/constants.ts';
+import { Bigint256Bindings } from './bindings/bigint256.ts';
+import { PallasBindings, VestaBindings, Bn254Bindings } from './bindings/curve.ts';
+import { FpBindings, FqBindings, Bn254FpBindings, Bn254FqBindings } from './bindings/field.ts';
+import { FpVectorBindings, FqVectorBindings, Bn254FpVectorBindings, Bn254FqVectorBindings } from './bindings/vector.ts';
 import type * as wasmNamespace from '../compiled/node_bindings/plonk_wasm.cjs';
 import {
   fieldsFromRustFlat,
   fieldsToRustFlat,
-} from './bindings/conversion-base.js';
-import { proofConversion } from './bindings/conversion-proof.js';
-import { conversionCore } from './bindings/conversion-core.js';
-import { verifierIndexConversion } from './bindings/conversion-verifier-index.js';
-import { oraclesConversion } from './bindings/conversion-oracles.js';
-import { jsEnvironment } from './bindings/env.js';
-import { srs } from './bindings/srs.js';
+} from './bindings/conversion-base.ts';
+import { proofConversion } from './bindings/conversion-proof.ts';
+import { conversionCore } from './bindings/conversion-core.ts';
+import { verifierIndexConversion } from './bindings/conversion-verifier-index.ts';
+import { oraclesConversion } from './bindings/conversion-oracles.ts';
+import { jsEnvironment } from './bindings/env.ts';
+import { srs } from './bindings/srs.ts';
 
 export { getRustConversion, RustConversion, Wasm };
 

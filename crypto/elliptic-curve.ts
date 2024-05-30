@@ -1,4 +1,4 @@
-import { bigIntToBits } from './bigint-helpers.js';
+import { bigIntToBits } from './bigint-helpers.ts';
 import {
   FiniteField,
   Fp,
@@ -8,8 +8,8 @@ import {
   p,
   q,
   bn254p, bn254q
-} from './finite-field.js';
-import { Endomorphism } from './elliptic-curve-endomorphism.js';
+} from './finite-field.ts';
+import { Endomorphism } from './elliptic-curve-endomorphism.ts';
 export {
   Pallas,
   Vesta,

@@ -1,6 +1,6 @@
-import { assert } from '../../lib/util/assert.js';
-import { bytesToBigInt, log2 } from './bigint-helpers.js';
-import { randomBytes } from './random.js';
+import { assert } from '../../lib/util/assert.ts';
+import { bytesToBigInt, log2 } from './bigint-helpers.ts';
+import { randomBytes } from './random.ts';
 
 export { createField, Fp, Fq, Bn254Fp, Bn254Fq, FiniteField, p, q, bn254p, bn254q, mod, inverse };
 

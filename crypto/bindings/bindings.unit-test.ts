@@ -14,16 +14,16 @@ import {
   mlBytesFromUint8Array,
   mlBytesToUint8Array,
   toMlStringAscii,
-} from './bigint256.js';
-import { wasm } from '../../js/node/node-backend.js';
+} from './bigint256.ts';
+import { wasm } from '../../js/node/node-backend.ts';
 import {
   Spec,
   ToSpec,
   FromSpec,
   defaultAssertEqual,
   id,
-} from '../../../lib/testing/equivalent.js';
-import { Random } from '../../../lib/testing/property.js';
+} from '../../../lib/testing/equivalent.ts';
+import { Random } from '../../../lib/testing/property.ts';
 import {
   WasmAffine,
   WasmProjective,
@@ -31,29 +31,29 @@ import {
   affineToRust,
   fieldFromRust,
   fieldToRust,
-} from './conversion-base.js';
-import { equivalentRecord } from './test-utils.js';
-import { Field, FpBindings, FqBindings } from './field.js';
-import { MlBool, MlOption } from '../../../lib/ml/base.js';
+} from './conversion-base.ts';
+import { equivalentRecord } from './test-utils.ts';
+import { Field, FpBindings, FqBindings } from './field.ts';
+import { MlBool, MlOption } from '../../../lib/ml/base.ts';
 import {
   OrInfinity,
   PallasBindings,
   VestaBindings,
   toMlOrInfinity,
-} from './curve.js';
+} from './curve.ts';
 import {
   GroupProjective,
   Pallas,
   ProjectiveCurve,
   Vesta,
-} from '../elliptic-curve.js';
+} from '../elliptic-curve.ts';
 import {
   WasmGPallas,
   WasmGVesta,
   WasmPallasGProjective,
   WasmVestaGProjective,
 } from '../../compiled/node_bindings/plonk_wasm.cjs';
-import { FiniteField, Fp, Fq } from '../finite-field.js';
+import { FiniteField, Fp, Fq } from '../finite-field.ts';
 
 let number: ToSpec<number, number> = { back: id };
 let numberLessThan = (max: number): FromSpec<number, number> => ({

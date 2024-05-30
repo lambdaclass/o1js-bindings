@@ -32,20 +32,20 @@ import type {
   RuntimeTableCfg,
   LookupTable,
   Field,
-} from './kimchi-types.js';
-import { MlArray, MlOption, MlTuple } from '../../../lib/ml/base.js';
+} from './kimchi-types.ts';
+import { MlArray, MlOption, MlTuple } from '../../../lib/ml/base.ts';
 import {
   fieldToRust,
   fieldFromRust,
   fieldsToRustFlat,
   fieldsFromRustFlat,
-} from './conversion-base.js';
+} from './conversion-base.ts';
 import {
   ConversionCore,
   ConversionCores,
   mapToUint32Array,
   unwrap,
-} from './conversion-core.js';
+} from './conversion-core.ts';
 
 export { proofConversion };
 

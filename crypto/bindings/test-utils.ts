@@ -1,7 +1,7 @@
 import {
   equivalent,
   SpecFromFunctions,
-} from '../../../lib/testing/equivalent.js';
+} from '../../../lib/testing/equivalent.ts';
 
 export { equivalentRecord };
 

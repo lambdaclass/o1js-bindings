@@ -14,21 +14,21 @@ import type {
   LookupInfo as WasmLookupInfo,
 } from '../../compiled/node_bindings/plonk_wasm.cjs';
 import type * as wasmNamespace from '../../compiled/node_bindings/plonk_wasm.cjs';
-import { MlBool, MlArray, MlOption } from '../../../lib/ml/base.js';
+import { MlBool, MlArray, MlOption } from '../../../lib/ml/base.ts';
 import {
   Field,
   VerifierIndex,
   Domain,
   VerificationEvals,
   PolyComm,
-} from './kimchi-types.js';
-import { fieldFromRust, fieldToRust } from './conversion-base.js';
+} from './kimchi-types.ts';
+import { fieldFromRust, fieldToRust } from './conversion-base.ts';
 import {
   ConversionCore,
   ConversionCores,
   freeOnFinalize,
-} from './conversion-core.js';
-import { Lookup, LookupInfo, LookupSelectors } from './lookup.js';
+} from './conversion-core.ts';
+import { Lookup, LookupInfo, LookupSelectors } from './lookup.ts';
 
 export { verifierIndexConversion };
 

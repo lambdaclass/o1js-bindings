@@ -1,19 +1,19 @@
-import type { Wasm, RustConversion } from '../bindings.js';
+import type { Wasm, RustConversion } from '../bindings.ts';
 import type {
   WasmFpSrs,
   WasmFqSrs,
 } from '../../compiled/node_bindings/plonk_wasm.cjs';
-import { PolyComm } from './kimchi-types.js';
+import { PolyComm } from './kimchi-types.ts';
 import {
   type CacheHeader,
   type Cache,
   withVersion,
   writeCache,
   readCache,
-} from '../../../lib/proof-system/cache.js';
-import { assert } from '../../../lib/errors.js';
-import { MlArray, MlOption } from '../../../lib/ml/base.js';
-import { OrInfinity, OrInfinityJson } from './curve.js';
+} from '../../../lib/proof-system/cache.ts';
+import { assert } from '../../../lib/errors.ts';
+import { MlArray, MlOption } from '../../../lib/ml/base.ts';
+import { OrInfinity, OrInfinityJson } from './curve.ts';
 
 export { srs, setSrsCache, unsetSrsCache };
 

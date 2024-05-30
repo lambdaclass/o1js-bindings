@@ -1,7 +1,7 @@
-import { Pallas, Vesta } from './elliptic-curve.js';
-import { Fp, Fq } from './finite-field.js';
+import { Pallas, Vesta } from './elliptic-curve.ts';
+import { Fp, Fq } from './finite-field.ts';
 import assert from 'node:assert/strict';
-import { test, Random } from '../../lib/testing/property.js';
+import { test, Random } from '../../lib/testing/property.ts';
 
 for (let [G, Field, Scalar] of [
   [Pallas, Fp, Fq] as const,
@@ -119,7 +119,7 @@ for (let [G, Field, Scalar] of [
       let { x: xa, y: ya } = affineX;
       assert(
         G.equal(X, G.zero) ||
-          Field.square(ya) === Field.add(Field.power(xa, 3n), G.b),
+        Field.square(ya) === Field.add(Field.power(xa, 3n), G.b),
         'affine on curve (or zero)'
       );
     }

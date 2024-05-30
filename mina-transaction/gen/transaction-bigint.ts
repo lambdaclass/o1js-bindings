@@ -18,15 +18,15 @@ import {
   ActionState,
   VerificationKeyHash,
   ReceiptChainHash,
-} from '../transaction-leaves-bigint.js';
-import { GenericSignable } from '../../lib/generic.js';
-import { SignableFromLayout, GenericLayout } from '../../lib/from-layout.js';
-import * as Json from './transaction-json.js';
-import { jsLayout } from './js-layout.js';
+} from '../transaction-leaves-bigint.ts';
+import { GenericSignable } from '../../lib/generic.ts';
+import { SignableFromLayout, GenericLayout } from '../../lib/from-layout.ts';
+import * as Json from './transaction-json.ts';
+import { jsLayout } from './js-layout.ts';
 
 export { customTypes, ZkappCommand, AccountUpdate, Account };
 export { Json };
-export * from '../transaction-leaves-bigint.js';
+export * from '../transaction-leaves-bigint.ts';
 export { signableFromLayout, toJSONEssential, empty, Layout, TypeMap };
 
 type TypeMap = {

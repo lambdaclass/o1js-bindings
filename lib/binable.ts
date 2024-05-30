@@ -3,9 +3,9 @@ import {
   assertNonNegativeInteger,
   NonNegativeInteger,
   PositiveInteger,
-} from '../crypto/non-negative.js';
-import { bytesToBigInt, bigIntToBytes } from '../crypto/bigint-helpers.js';
-import { GenericSignableField } from './generic.js';
+} from '../crypto/non-negative.ts';
+import { bytesToBigInt, bigIntToBytes } from '../crypto/bigint-helpers.ts';
+import { GenericSignableField } from './generic.ts';
 
 export {
   Binable,
@@ -179,11 +179,11 @@ type AnyEnum = EnumNoArgument<string> | EnumWithArgument<string, any>;
 
 function enumWithArgument<Enum_ extends Tuple<AnyEnum>>(types: {
   [i in number]: Enum_[i] extends EnumWithArgument<string, any>
-    ? {
-        type: Enum_[i]['type'];
-        value: Binable<Enum_[i]['value']>;
-      }
-    : { type: Enum_[i]['type'] };
+  ? {
+    type: Enum_[i]['type'];
+    value: Binable<Enum_[i]['value']>;
+  }
+  : { type: Enum_[i]['type'] };
 }): Binable<Enum_[number]> {
   let typeToIndex = Object.fromEntries(
     (types as { type: string; value: any }[]).map(({ type }, i) => [type, i])

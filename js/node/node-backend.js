@@ -2,7 +2,7 @@ import { isMainThread, parentPort, workerData, Worker } from 'worker_threads';
 import os from 'os';
 import wasm_ from '../../compiled/_node_bindings/plonk_wasm.cjs';
 import { fileURLToPath } from 'url';
-import { workers } from '../../../lib/proof-system/workers.js';
+import { workers } from '../../../lib/proof-system/workers.ts';
 let url = import.meta.url;
 let filename = url !== undefined ? fileURLToPath(url) : __filename;
 

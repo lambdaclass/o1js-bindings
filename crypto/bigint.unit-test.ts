@@ -5,9 +5,9 @@ import {
   bigintToBytes32,
   bytesToBigint32,
   parseHexString32,
-} from './bigint-helpers.js';
-import { Fp } from './finite-field.js';
-import { Random, test } from '../../lib/testing/property.js';
+} from './bigint-helpers.ts';
+import { Fp } from './finite-field.ts';
+import { Random, test } from '../../lib/testing/property.ts';
 
 function testBigintRoundtrip(x: bigint, size: number) {
   let bytes = bigIntToBytes(x, size);

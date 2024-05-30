@@ -1,5 +1,5 @@
-import { bytesToBigInt } from './bigint-helpers.js';
-import { randomBytes } from './random.js';
+import { bytesToBigInt } from './bigint-helpers.ts';
+import { randomBytes } from './random.ts';
 
 export { Fp, Fq, Bn254Fp, Bn254Fq, FiniteField, p, q, bn254p, bn254q, mod, inverse };
 

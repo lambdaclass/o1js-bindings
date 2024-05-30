@@ -1,5 +1,5 @@
-import { bytesToBigInt, changeBase } from '../crypto/bigint-helpers.js';
-import { Field } from '../../lib/core.js';
+import { bytesToBigInt, changeBase } from '../crypto/bigint-helpers.ts';
+import { Field } from '../../lib/core.ts';
 
 export {
   stringToFields,

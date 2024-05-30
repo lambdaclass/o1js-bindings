@@ -1,7 +1,7 @@
-import { assertPositiveInteger } from './non-negative.js';
-import { poseidonParamsBn128, poseidonParamsKimchiFp, poseidonParamsLegacyFp } from './constants.js';
-import { Bn254Fp, FiniteField, Fp } from './finite-field.js';
-import { GroupMapPallas } from './elliptic-curve.js';
+import { assertPositiveInteger } from './non-negative.ts';
+import { poseidonParamsBn128, poseidonParamsKimchiFp, poseidonParamsLegacyFp } from './constants.ts';
+import { Bn254Fp, FiniteField, Fp } from './finite-field.ts';
+import { GroupMapPallas } from './elliptic-curve.ts';
 
 export { Poseidon, PoseidonLegacy, PoseidonBn254 };
 

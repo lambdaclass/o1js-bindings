@@ -1,4 +1,4 @@
-import { Binable } from './binable.js';
+import { Binable } from './binable.ts';
 
 export {
   GenericProvable,
@@ -73,7 +73,7 @@ const emptyType = {
   toFields: () => [],
   toAuxiliary: (): [] => [],
   fromFields: () => null,
-  check: () => {},
+  check: () => { },
   toInput: () => ({}),
   toJSON: () => null,
   fromJSON: () => null,

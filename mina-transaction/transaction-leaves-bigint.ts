@@ -4,16 +4,16 @@ import {
   UInt32,
   UInt64,
   Sign,
-} from '../../provable/field-bigint.js';
-import { PublicKey } from '../../provable/curve-bigint.js';
-import { derivedLeafTypesSignable } from './derived-leaves.js';
-import { createEvents } from '../../lib/events.js';
+} from '../../provable/field-bigint.ts';
+import { PublicKey } from '../../provable/curve-bigint.ts';
+import { derivedLeafTypesSignable } from './derived-leaves.ts';
+import { createEvents } from '../../lib/events.ts';
 import {
   Poseidon,
   HashHelpers,
   packToFields,
-} from '../../provable/poseidon-bigint.js';
-import { mocks, protocolVersions } from '../crypto/constants.js';
+} from '../../provable/poseidon-bigint.ts';
+import { mocks, protocolVersions } from '../crypto/constants.ts';
 
 export { PublicKey, Field, Bool, AuthRequired, UInt64, UInt32, Sign, TokenId };
 

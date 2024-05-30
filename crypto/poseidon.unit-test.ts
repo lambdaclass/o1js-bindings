@@ -1,12 +1,12 @@
-import { Poseidon, PoseidonLegacy } from './poseidon.js';
-import { testPoseidonKimchiFp } from './test-vectors/poseidon-kimchi.js';
-import { testPoseidonLegacyFp } from './test-vectors/poseidon-legacy.js';
+import { Poseidon, PoseidonLegacy } from './poseidon.ts';
+import { testPoseidonKimchiFp } from './test-vectors/poseidon-kimchi.ts';
+import { testPoseidonLegacyFp } from './test-vectors/poseidon-legacy.ts';
 import { expect } from 'expect';
-import { bigIntToBytes, parseHexString32 } from './bigint-helpers.js';
-import { test, Random } from '../../lib/testing/property.js';
+import { bigIntToBytes, parseHexString32 } from './bigint-helpers.ts';
+import { test, Random } from '../../lib/testing/property.ts';
 import { Test } from '../../snarky.js';
-import { FieldConst } from '../../lib/field.js';
-import { MlArray } from '../../lib/ml/base.js';
+import { FieldConst } from '../../lib/field.ts';
+import { MlArray } from '../../lib/ml/base.ts';
 
 function checkTestVectors(
   testVectors: { input: string[]; output: string }[],

@@ -3,7 +3,7 @@ import {
   GenericSignable,
   primitiveTypeMap,
   primitiveTypes,
-} from './generic.js';
+} from './generic.ts';
 
 export {
   ProvableFromLayout,
@@ -38,8 +38,8 @@ type TypeMapValues<
   JsonMap extends AnyTypeMap,
   BaseType
 > = {
-  [K in keyof TypeMap & keyof JsonMap]: BaseType;
-};
+    [K in keyof TypeMap & keyof JsonMap]: BaseType;
+  };
 
 type TypeMapProvable<TypeMap extends AnyTypeMap, JsonMap extends AnyTypeMap> = {
   [K in keyof TypeMap & keyof JsonMap]: GenericProvableExtended<
@@ -475,10 +475,10 @@ function ProvableFromLayout<
         map(type, value) {
           return type.check(value);
         },
-        reduceArray() {},
-        reduceObject() {},
-        reduceFlaggedOption() {},
-        reduceOrUndefined() {},
+        reduceArray() { },
+        reduceObject() { },
+        reduceFlaggedOption() { },
+        reduceOrUndefined() { },
       },
       typeData,
       value
@@ -612,21 +612,21 @@ type RangeLayout<TypeMap extends AnyTypeMap, T = BaseLayout<TypeMap>> = {
 type OptionLayout<TypeMap extends AnyTypeMap, T = BaseLayout<AnyTypeMap>> = {
   type: 'option';
 } & (
-  | {
+    | {
       optionType: 'closedInterval';
       rangeMin: any;
       rangeMax: any;
       inner: RangeLayout<TypeMap, T>;
     }
-  | {
+    | {
       optionType: 'flaggedOption';
       inner: T;
     }
-  | {
+    | {
       optionType: 'orUndefined';
       inner: T;
     }
-) &
+  ) &
   WithChecked<TypeMap>;
 
 type FlaggedOptionLayout<

@@ -6,17 +6,17 @@ import type {
   WasmGPallas,
   WasmGVesta,
 } from '../../compiled/node_bindings/plonk_wasm.cjs';
-import { OrInfinity, Gate, PolyComm, Wire } from './kimchi-types.js';
+import { OrInfinity, Gate, PolyComm, Wire } from './kimchi-types.ts';
 import type * as wasmNamespace from '../../compiled/node_bindings/plonk_wasm.cjs';
-import { MlArray, MlOption } from '../../../lib/ml/base.js';
-import { mapTuple } from './util.js';
+import { MlArray, MlOption } from '../../../lib/ml/base.ts';
+import { mapTuple } from './util.ts';
 import {
   WasmAffine,
   affineFromRust,
   affineToRust,
   fieldsFromRustFlat,
   fieldsToRustFlat,
-} from './conversion-base.js';
+} from './conversion-base.ts';
 
 export {
   ConversionCore,

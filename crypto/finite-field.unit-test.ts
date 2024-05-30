@@ -1,7 +1,7 @@
-import { Fp, Fq } from './finite-field.js';
+import { Fp, Fq } from './finite-field.ts';
 import assert from 'node:assert/strict';
-import { Random, test } from '../../lib/testing/property.js';
-import { exampleFields } from './finite-field-examples.js';
+import { Random, test } from '../../lib/testing/property.ts';
+import { exampleFields } from './finite-field-examples.ts';
 
 let fields = Object.values(exampleFields);
 

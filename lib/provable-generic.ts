@@ -5,7 +5,7 @@ import {
   GenericProvableExtended,
   GenericProvableExtendedPure,
   GenericSignable,
-} from './generic.js';
+} from './generic.ts';
 
 export {
   createDerivers,
@@ -350,10 +350,10 @@ type InferPrimitiveJson<P extends Primitive> = P extends typeof String
 
 type InferProvable<A, Field> = A extends Constructor<infer U>
   ? A extends GenericProvable<U, Field>
-    ? U
-    : A extends Struct<U, Field>
-    ? U
-    : InferProvableBase<A, Field>
+  ? U
+  : A extends Struct<U, Field>
+  ? U
+  : InferProvableBase<A, Field>
   : InferProvableBase<A, Field>;
 
 type InferProvableBase<A, Field> = A extends GenericProvable<infer U, Field>
@@ -362,14 +362,14 @@ type InferProvableBase<A, Field> = A extends GenericProvable<infer U, Field>
   ? InferPrimitive<A>
   : A extends Tuple<any>
   ? {
-      [I in keyof A]: InferProvable<A[I], Field>;
-    }
+    [I in keyof A]: InferProvable<A[I], Field>;
+  }
   : A extends (infer U)[]
   ? InferProvable<U, Field>[]
   : A extends Record<any, any>
   ? {
-      [K in keyof A]: InferProvable<A[K], Field>;
-    }
+    [K in keyof A]: InferProvable<A[K], Field>;
+  }
   : never;
 
 type WithJson<J> = { toJSON: (x: any) => J };
@@ -380,14 +380,14 @@ type InferJson<A> = A extends WithJson<infer J>
   ? InferPrimitiveJson<A>
   : A extends Tuple<any>
   ? {
-      [I in keyof A]: InferJson<A[I]>;
-    }
+    [I in keyof A]: InferJson<A[I]>;
+  }
   : A extends WithJson<infer U>[]
   ? U[]
   : A extends Record<any, any>
   ? {
-      [K in keyof A]: InferJson<A[K]>;
-    }
+    [K in keyof A]: InferJson<A[K]>;
+  }
   : JSONValue;
 
 type IsPure<A, Field> = IsPureBase<A, Field> extends true ? true : false;
@@ -402,8 +402,8 @@ type IsPureBase<A, Field> = A extends GenericProvablePure<any, Field>
   ? IsPure<U, Field>
   : A extends Record<any, any>
   ? {
-      [K in keyof A]: IsPure<A[K], Field>;
-    }[keyof A]
+    [K in keyof A]: IsPure<A[K], Field>;
+  }[keyof A]
   : false;
 
 type InferredProvable<A, Field> = IsPure<A, Field> extends true
@@ -418,14 +418,14 @@ type InferSignable<A, Field> = A extends GenericSignable<infer U, any, Field>
   ? InferPrimitive<A>
   : A extends Tuple<any>
   ? {
-      [I in keyof A]: InferSignable<A[I], Field>;
-    }
+    [I in keyof A]: InferSignable<A[I], Field>;
+  }
   : A extends (infer U)[]
   ? InferSignable<U, Field>[]
   : A extends Record<any, any>
   ? {
-      [K in keyof A]: InferSignable<A[K], Field>;
-    }
+    [K in keyof A]: InferSignable<A[K], Field>;
+  }
   : never;
 
 type InferredSignable<A, Field> = GenericSignable<

@@ -1,5 +1,5 @@
 import { expect } from 'expect';
-import { test, Random } from '../../lib/testing/property.js';
+import { test, Random } from '../../lib/testing/property.ts';
 import {
   Binable,
   BinableString,
@@ -9,9 +9,9 @@ import {
   record,
   withCheck,
   withVersionNumber,
-} from './binable.js';
-import { PublicKey, Scalar } from '../../provable/curve-bigint.js';
-import { Bool, Field, UInt64 } from '../../provable/field-bigint.js';
+} from './binable.ts';
+import { PublicKey, Scalar } from '../../provable/curve-bigint.ts';
+import { Bool, Field, UInt64 } from '../../provable/field-bigint.ts';
 
 // uint
 

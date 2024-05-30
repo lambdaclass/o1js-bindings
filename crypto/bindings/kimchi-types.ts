@@ -1,10 +1,10 @@
 /**
  * This file is a TS representation of kimchi_types.ml
  */
-import type { Lookup } from './lookup.js';
-import type { MlArray, MlOption, MlTuple } from '../../../lib/ml/base.js';
-import type { OrInfinity } from './curve.js';
-import type { Field } from './field.js';
+import type { Lookup } from './lookup.ts';
+import type { MlArray, MlOption, MlTuple } from '../../../lib/ml/base.ts';
+import type { OrInfinity } from './curve.ts';
+import type { Field } from './field.ts';
 import type {
   WasmFpSrs,
   WasmFqSrs,

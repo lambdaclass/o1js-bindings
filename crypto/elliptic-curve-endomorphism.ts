@@ -1,5 +1,5 @@
-import { assert } from '../../lib/errors.js';
-import { abs, bigIntToBits, log2, max, sign } from './bigint-helpers.js';
+import { assert } from '../../lib/errors.ts';
+import { abs, bigIntToBits, log2, max, sign } from './bigint-helpers.ts';
 import {
   GroupAffine,
   GroupProjective,
@@ -10,8 +10,8 @@ import {
   projectiveNeg,
   projectiveToAffine,
   projectiveZero,
-} from './elliptic-curve.js';
-import { FiniteField, mod } from './finite-field.js';
+} from './elliptic-curve.ts';
+import { FiniteField, mod } from './finite-field.ts';
 
 export {
   Endomorphism,

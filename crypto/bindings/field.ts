@@ -1,16 +1,16 @@
 /**
  * TS implementation of Pasta_bindings.{Fp, Fq}
  */
-import { FiniteField, Fp, Fq, Bn254Fp, Bn254Fq, mod } from '../finite-field.js';
+import { FiniteField, Fp, Fq, Bn254Fp, Bn254Fq, mod } from '../finite-field.ts';
 import {
   Bigint256Bindings,
   Bigint256,
   MlBytes,
   fromMlString,
   toMlStringAscii,
-} from './bigint256.js';
-import { MlOption, MlBool } from '../../../lib/ml/base.js';
-import { withPrefix } from './util.js';
+} from './bigint256.ts';
+import { MlOption, MlBool } from '../../../lib/ml/base.ts';
+import { withPrefix } from './util.ts';
 
 type Field = [0, bigint];
 

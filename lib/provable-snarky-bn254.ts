@@ -1,5 +1,5 @@
 import { ProvableBn254, ProvablePureBn254 } from '../../snarky.js';
-import { FieldBn254 } from '../../lib/core-bn254.js';
+import { FieldBn254 } from '../../lib/core-bn254.ts';
 import {
     createDerivers,
     NonMethods,
@@ -9,9 +9,9 @@ import {
     IsPure as GenericIsPure,
     createHashInput,
     Constructor,
-} from './provable-generic.js';
-import { Tuple } from '../../lib/util/types.js';
-import { GenericHashInput } from './generic.js';
+} from './provable-generic.ts';
+import { Tuple } from '../../lib/util/types.ts';
+import { GenericHashInput } from './generic.ts';
 
 // external API
 export {

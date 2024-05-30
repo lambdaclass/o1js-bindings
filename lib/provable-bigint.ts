@@ -1,11 +1,11 @@
-import { bigIntToBytes } from '../crypto/bigint-helpers.js';
-import { createDerivers } from './provable-generic.js';
+import { bigIntToBytes } from '../crypto/bigint-helpers.ts';
+import { createDerivers } from './provable-generic.ts';
 import {
   GenericHashInput,
   GenericProvableExtended,
   GenericSignable,
-} from './generic.js';
-import { BinableWithBits, defineBinable, withBits } from './binable.js';
+} from './generic.ts';
+import { BinableWithBits, defineBinable, withBits } from './binable.ts';
 
 export {
   signable,

@@ -1,5 +1,5 @@
-import { CurveParams, Pallas, Vesta } from './elliptic-curve.js';
-import { exampleFields } from './finite-field-examples.js';
+import { CurveParams, Pallas, Vesta } from './elliptic-curve.ts';
+import { exampleFields } from './finite-field-examples.ts';
 
 export { CurveParams };
 

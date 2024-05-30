@@ -9,10 +9,10 @@ import {
   Bool,
   AuthRequired,
   Sign,
-} from '../transaction-leaves-json.js';
+} from '../transaction-leaves-json.ts';
 
 export { ZkappCommand, AccountUpdate, Account };
-export * from '../transaction-leaves-json.js';
+export * from '../transaction-leaves-json.ts';
 export { TypeMap };
 
 type TypeMap = {

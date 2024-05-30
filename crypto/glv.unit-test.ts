@@ -1,9 +1,9 @@
-import { assert } from '../../lib/errors.js';
-import { CurveParams } from './elliptic-curve-examples.js';
-import { createCurveAffine } from './elliptic-curve.js';
-import { computeGlvData, decompose } from './elliptic-curve-endomorphism.js';
-import { Random, test } from '../../lib/testing/property.js';
-import { log2 } from './bigint-helpers.js';
+import { assert } from '../../lib/errors.ts';
+import { CurveParams } from './elliptic-curve-examples.ts';
+import { createCurveAffine } from './elliptic-curve.ts';
+import { computeGlvData, decompose } from './elliptic-curve-endomorphism.ts';
+import { Random, test } from '../../lib/testing/property.ts';
+import { log2 } from './bigint-helpers.ts';
 
 const Ntest = 100000;
 const isVerbose = false;

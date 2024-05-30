@@ -1,8 +1,8 @@
 /**
  * TS implementation of Pasta_bindings.{Pallas, Vesta}
  */
-import { MlPair } from 'src/lib/ml/base.js';
-import { Field } from './field.js';
+import { MlPair } from 'src/lib/ml/base.ts';
+import { Field } from './field.ts';
 import {
   Pallas,
   Vesta,
@@ -10,9 +10,9 @@ import {
   ProjectiveCurve,
   GroupProjective,
   GroupAffine,
-} from '../elliptic-curve.js';
-import { withPrefix } from './util.js';
-import { Bn254Fp, FiniteField, Fp, Fq } from '../finite_field.js';
+} from '../elliptic-curve.ts';
+import { withPrefix } from './util.ts';
+import { Bn254Fp, FiniteField, Fp, Fq } from '../finite_field.ts';
 
 export {
   VestaBindings,
