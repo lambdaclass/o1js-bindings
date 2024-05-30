@@ -1,6 +1,6 @@
-import { isMainThread, parentPort, workerData, Worker } from 'npm:worker_threads';
-import os from 'npm:os';
-import wasm_ from '../../compiled/_node_bindings/plonk_wasm.cjs';
+import { isMainThread, parentPort, workerData, Worker } from "https://deno.land/std@0.160.0/node/worker_threads.ts";
+import os from 'npm:@types/node';
+import wasm_ from '../../compiled/node_bindings/plonk_wasm.cjs';
 import { fileURLToPath } from 'npm:url';
 import { workers } from '../../../lib/proof-system/workers.ts';
 let url = import.meta.url;
